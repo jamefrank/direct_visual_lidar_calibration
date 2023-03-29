@@ -297,6 +297,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -329,7 +336,7 @@
   
     <li class="md-nav__item">
       <a href="../example/" class="md-nav__link">
-        Testing on example data
+        Calibration example
       </a>
     </li>
   
@@ -390,6 +397,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -430,14 +444,125 @@
 <p><strong>Example2</strong>: Run preprocessing with GUI
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>-v<span class="w"> </span>/path/to/input/bags:/tmp/input_bags<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>-v<span class="w"> </span>/path/to/save/result:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>preprocess<span class="w"> </span>-a<span class="w"> </span>-v<span class="w"> </span>/tmp/input_bags<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>-v<span class="w"> </span>/path/to/input/bags:/tmp/input_bags<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>-v<span class="w"> </span>/path/to/save/result:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>preprocess<span class="w"> </span>-a<span class="w"> </span>-v<span class="w"> </span>/tmp/input_bags<span class="w"> </span>/tmp/preprocessed
 </code></pre></div></p>
+<h2 id="examples">Examples</h2>
+<p>See also <a href="../example/">Calibration example</a> page.</p>
+<details>
+  <summary>Full commands for Livox-camera calibration example on docker (ROS2)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">bag_path</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>livox<span class="k">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">preprocessed_path</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>livox_preprocessed<span class="k">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Preprocessing</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$bag_path</span>:/tmp/input_bags<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>preprocess<span class="w"> </span>-av<span class="w"> </span>/tmp/input_bags<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c1"># Initial guess</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>initial_guess_manual<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="c1"># Fine registration</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>calibrate<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="c1"># Result inspection</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:humble<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>viewer<span class="w"> </span>/tmp/preprocessed
+</code></pre></div>
+</details>
+
+<details>
+  <summary>Full commands for Livox-camera calibration example on docker (ROS1)</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">bag_path</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>livox_ros1<span class="k">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">preprocessed_path</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>livox_ros1_preprocessed<span class="k">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Preprocessing</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>-it<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$bag_path</span>:/tmp/input_bags<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:noetic<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span>rosrun<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>preprocess<span class="w"> </span>-av<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span>--camera_model<span class="w"> </span>plumb_bob<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span>--camera_intrinsic<span class="w"> </span><span class="m">1452</span>.711762456289,1455.877531619469,1265.25895179213,1045.818593664107<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span>--camera_distortion_coeffs<span class="w"> </span>-0.04203564850455424,0.0873170980751213,0.002386381727224478,0.005629700706305988,-0.04251149335870252<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span>/tmp/input_bags<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># Initial guess</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:noetic<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span>rosrun<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>initial_guess_manual<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="c1"># Fine registration</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:noetic<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">  </span>rosrun<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>calibrate<span class="w"> </span>/tmp/preprocessed
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="c1"># Result inspection</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">  </span>--rm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">  </span>--net<span class="w"> </span>host<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="w">  </span>--gpus<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">  </span>-e<span class="w"> </span><span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$HOME</span>/.Xauthority:/root/.Xauthority<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">  </span>-v<span class="w"> </span><span class="nv">$preprocessed_path</span>:/tmp/preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">  </span>koide3/direct_visual_lidar_calibration:noetic<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="w">  </span>rosrun<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>viewer<span class="w"> </span>/tmp/preprocessed
+</code></pre></div>
+</details>
 
 
 
