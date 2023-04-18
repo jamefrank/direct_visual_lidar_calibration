@@ -12,20 +12,20 @@
         <meta name="author" content="k.koide">
       
       
-        <link rel="canonical" href="https://koide3.github.io/direct_visual_lidar_calibration/installation/">
+        <link rel="canonical" href="https://koide3.github.io/direct_visual_lidar_calibration/example_map/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../example/">
       
       
-        <link rel="next" href="../docker/">
+        <link rel="next" href="../programs/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
     
     
       
-        <title>Installation - direct_visual_lidar_calibration</title>
+        <title>Camera-map registration - direct_visual_lidar_calibration</title>
       
     
     
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#installation" class="md-skip">
+        <a href="#camera-map-registration" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Installation
+              Camera-map registration
             
           </span>
         </div>
@@ -233,73 +233,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Installation
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
         Installation
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    Dependencies
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-common-dependencies" class="md-nav__link">
-    Install Common dependencies
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#install-superglue-optional" class="md-nav__link">
-    Install SuperGlue (Optional)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#build-direct_visual_lidar_calibration" class="md-nav__link">
-    Build direct_visual_lidar_calibration
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -355,11 +293,73 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../example_map/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Camera-map registration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Camera-map registration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-download-dataset" class="md-nav__link">
+    1. Download dataset
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-preprocessing" class="md-nav__link">
+    2. Preprocessing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-initial-guess" class="md-nav__link">
+    3. Initial guess
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fine-registration" class="md-nav__link">
+    4. Fine registration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -406,29 +406,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
-    Dependencies
+  <a href="#1-download-dataset" class="md-nav__link">
+    1. Download dataset
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-common-dependencies" class="md-nav__link">
-    Install Common dependencies
+  <a href="#2-preprocessing" class="md-nav__link">
+    2. Preprocessing
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-superglue-optional" class="md-nav__link">
-    Install SuperGlue (Optional)
+  <a href="#3-initial-guess" class="md-nav__link">
+    3. Initial guess
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-direct_visual_lidar_calibration" class="md-nav__link">
-    Build direct_visual_lidar_calibration
+  <a href="#4-fine-registration" class="md-nav__link">
+    4. Fine registration
   </a>
   
 </li>
@@ -452,73 +452,37 @@
 
 
 
-<h1 id="installation">Installation</h1>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We provide docker images so that the user can do calibration without installation: <a href="../docker/">Docker images</a></p>
-</div>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li><a href="https://www.ros.org/">ROS1/ROS2</a></li>
-<li><a href="https://pointclouds.org/">PCL</a></li>
-<li><a href="https://opencv.org/">OpenCV</a></li>
-<li><a href="https://gtsam.org/">GTSAM</a></li>
-<li><a href="http://ceres-solver.org/">Ceres</a></li>
-<li><a href="https://github.com/koide3/iridescence">Iridescence</a></li>
-<li><a href="https://github.com/magicleap/SuperGluePretrainedNetwork">SuperGlue</a> [optional]</li>
-</ul>
-<h2 id="install-common-dependencies">Install Common dependencies</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install dependencies</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libomp-dev<span class="w"> </span>libboost-all-dev<span class="w"> </span>libglm-dev<span class="w"> </span>libglfw3-dev<span class="w"> </span>libpng-dev<span class="w"> </span>libjpeg-dev
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Install GTSAM</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/borglab/gtsam
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">cd</span><span class="w"> </span>gtsam<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="m">4</span>.2a9
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>mkdir<span class="w"> </span>build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># For Ubuntu 22.04, add -DGTSAM_USE_SYSTEM_EIGEN=ON</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DGTSAM_BUILD_EXAMPLES_ALWAYS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">         </span>-DGTSAM_BUILD_TESTS<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">         </span>-DGTSAM_WITH_TBB<span class="o">=</span>OFF<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">         </span>-DGTSAM_BUILD_WITH_MARCH_NATIVE<span class="o">=</span>OFF
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># Install Ceres</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ceres-solver/ceres-solver
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>mkdir<span class="w"> </span>ceres-solver/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ceres-solver/build
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DBUILD_EXAMPLES<span class="o">=</span>OFF<span class="w"> </span>-DBUILD_TESTING<span class="o">=</span>OFF<span class="w"> </span>-DUSE_CUDA<span class="o">=</span>OFF
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># Install Iridescence for visualization</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/koide3/iridescence<span class="w"> </span>--recursive
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>mkdir<span class="w"> </span>iridescence/build<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>iridescence/build
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
-</code></pre></div>
-<h2 id="install-superglue-optional">Install SuperGlue (Optional)</h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><a href="https://github.com/magicleap/SuperGluePretrainedNetwork.git">SuperGlue</a> is not allowed to be used for commercial purposes. You must carefully check and follow its licensing conditions.</p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip3<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>opencv-python<span class="w"> </span>torch<span class="w"> </span>matplotlib
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/magicleap/SuperGluePretrainedNetwork.git
+<h1 id="camera-map-registration">Camera-map registration</h1>
+<h3 id="1-download-dataset">1. Download dataset</h3>
+<p>Download <a href="https://zenodo.org/record/7780490/files/faro.tar.gz?download=1">faro.tar.gz</a> from <a href="https://zenodo.org/record/7780490">zenodo repository</a> and unzip it:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>tar<span class="w"> </span>xzvf<span class="w"> </span>faro.tar.gz
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>ls<span class="w"> </span>faro
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># camera_params.txt  image00.jpg  map.ply</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;export PYTHONPATH=$PYTHONPATH:/path/to/SuperGluePretrainedNetwork&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cat<span class="w"> </span>faro/camera_params.txt
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># camera_model: plumb_bob</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># intrinsic: 2242.45,2242.69,1579.98,1172.42</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># distortion: -0.0272569,0.00207913,-0.00411347,-0.00208982,-0.00291759</span>
 </code></pre></div>
-<h2 id="build-direct_visual_lidar_calibration">Build direct_visual_lidar_calibration</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># ROS1</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/koide3/direct_visual_lidar_calibration.git<span class="w"> </span>--recursive
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>catkin_make
+<h3 id="2-preprocessing">2. Preprocessing</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>preprocess_map<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--map_path<span class="w"> </span>faro/map.ply<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--image_path<span class="w"> </span>faro/image00.jpg<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--dst_path<span class="w"> </span>faro_preprocessed<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--camera_model<span class="w"> </span>plumb_bob<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--camera_intrinsics<span class="w"> </span><span class="m">2242</span>.45,2242.69,1579.98,1172.42<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--camera_distortion_coeffs<span class="w"> </span>-0.0272569,0.00207913,-0.00411347,-0.00208982,-0.00291759
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># ROS2</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/koide3/direct_visual_lidar_calibration.git<span class="w"> </span>--recursive
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">cd</span><span class="w"> </span>..<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build
+<h3 id="3-initial-guess">3. Initial guess</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>initial_guess_manual<span class="w"> </span>faro_preprocessed
 </code></pre></div>
+<h3 id="4-fine-registration">4. Fine registration</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>calibrate<span class="w"> </span>faro_preprocessed
+</code></pre></div>
+<div class="youtube">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yTz07B23NXM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 
 

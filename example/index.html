@@ -18,7 +18,7 @@
         <link rel="prev" href="../collection/">
       
       
-        <link rel="next" href="../programs/">
+        <link rel="next" href="../example_map/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
@@ -371,8 +371,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-getting-lidar-camera-transformation" class="md-nav__link">
-    6. Getting LiDAR-camera transformation
+  <a href="#6-calibration-result-file" class="md-nav__link">
+    6. Calibration result file
   </a>
   
 </li>
@@ -441,6 +441,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../example_map/" class="md-nav__link">
+        Camera-map registration
+      </a>
     </li>
   
 
@@ -544,8 +559,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-getting-lidar-camera-transformation" class="md-nav__link">
-    6. Getting LiDAR-camera transformation
+  <a href="#6-calibration-result-file" class="md-nav__link">
+    6. Calibration result file
   </a>
   
 </li>
@@ -631,7 +646,7 @@
 
 <h1 id="calibration-example">Calibration example</h1>
 <h2 id="dataset">Dataset</h2>
-<p><a href="https://zenodo.org/record/7779880">LiDAR-camera calibration dataset (Zenodo)</a></p>
+<p><a href="https://zenodo.org/record/7780490">LiDAR-camera calibration dataset (Zenodo)</a></p>
 <ul>
 <li><a href="https://zenodo.org/record/7779880/files/livox.tar.gz?download=1">livox.tar.gz (ROS2)</a></li>
 <li><a href="https://zenodo.org/record/7779880/files/ouster.tar.gz?download=1">ouster.tar.gz (ROS2)</a></li>
@@ -644,7 +659,7 @@
 </div>
 <h2 id="livox-camera-calibration">Livox-camera calibration</h2>
 <h3 id="1-download-dataset">1. Download dataset</h3>
-<p>Download <a href="https://zenodo.org/record/7777354/files/livox.tar.gz?download=1">livox.tar.gz</a> from <a href="https://zenodo.org/record/7779880">zenodo repository</a> and unzip it:
+<p>Download <a href="https://zenodo.org/record/7777354/files/livox.tar.gz?download=1">livox.tar.gz</a> from <a href="https://zenodo.org/record/7780490">zenodo repository</a> and unzip it:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>$<span class="w"> </span>tar<span class="w"> </span>xzvf<span class="w"> </span>livox.tar.gz
 </code></pre></div></p>
 <p>The livox dataset contains five ros2 bags, and each bag contains points/image/camera_info topics:
@@ -694,6 +709,7 @@
 <p>Then, run <code>initial_guess_auto</code> to perform RANSAC-based initial guess estimation:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>initial_guess_auto<span class="w"> </span>livox_preprocessed
 </code></pre></div></p>
+<p><img alt="rosbag2_2023_03_09-13_42_46_superglue" src="https://user-images.githubusercontent.com/31344317/228459350-d1d4c83a-53b7-409f-bddd-d548a08b3c9f.jpg" /></p>
 <h3 id="3b-initial-guess-manual">3b. Initial guess (Manual)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>initial_guess_manual<span class="w"> </span>livox_preprocessed
 </code></pre></div>
@@ -717,7 +733,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>direct_visual_lidar_calibration<span class="w"> </span>calibrate<span class="w"> </span>livox_preprocessed
 </code></pre></div>
 <p><img alt="Screenshot_20230328_182427" src="https://user-images.githubusercontent.com/31344317/228191764-837e5fa1-b5d1-4d62-817b-f306473554d5.png" /></p>
-<h3 id="6-getting-lidar-camera-transformation">6. Getting LiDAR-camera transformation</h3>
+<h3 id="6-calibration-result-file">6. Calibration result file</h3>
 <p>Once the calibration is completed, open <code>livox_preprocessed/calib.json</code> with a text editor and find the calibration result <code>T_lidar_camera: [x, y, z, qx, qy, qz, qw]</code> that transforms a 3D point in the camera frame into the LiDAR frame (i.e., <code>p_lidar = T_lidar_camera * p_camera</code>).</p>
 <p><code>calib.json</code> also contains camera parameters, manual/automatic initial guess results (<code>init_T_lidar_camera</code> and <code>init_T_lidar_camera_auto</code>), and some meta data.</p>
 <details>
@@ -786,7 +802,7 @@
 <h2 id="ouster-camera-calibration">Ouster-camera calibration</h2>
 <p><strong>Most of the commands below are the same as those for the Livox dataset except for the options for the preprocessing. See the Livox example for detailed explanation.</strong></p>
 <h3 id="1-download-dataset_1">1. Download dataset</h3>
-<p>Download <a href="https://zenodo.org/record/7777354/files/ouster.tar.gz?download=1">ouster.tar.gz</a> from <a href="https://zenodo.org/record/7779880">zenodo repository</a> and unzip it:
+<p>Download <a href="https://zenodo.org/record/7777354/files/ouster.tar.gz?download=1">ouster.tar.gz</a> from <a href="https://zenodo.org/record/7780490">zenodo repository</a> and unzip it:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$<span class="w"> </span>tar<span class="w"> </span>xzvf<span class="w"> </span>ouster.tar.gz
 </code></pre></div></p>
 <p>The ouster dataset contains two ros2 bags, and each bag contains points/image/camera_info topics:
